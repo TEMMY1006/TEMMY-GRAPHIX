@@ -1,112 +1,240 @@
 
 "use strict";
 
-// Mobile navigation
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = (id) => document.getElementById(id);
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
+  // Update copyright year automatically
+  $("year").textContent = new Date().getFullYear();
 
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.innerHTML = isOpen
-    ? '<i class="fa-solid fa-xmark"></i>'
-    : '<i class="fa-solid fa-bars"></i>';
-});
+  // Mobile navigation
+  const menuToggle = $("menuToggle");
+  const navLinks = $("navLinks");
+  const navItems = document.querySelectorAll(".nav-link");
 
-// Close the mobile menu when a navigation link is selected
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
+  function closeMenu() {
     navLinks.classList.remove("open");
     menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    menuToggle.setAttribute("aria-label", "Open navigation");
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation" : "Open navigation"
+    );
   });
-});
 
-// Automatically update the copyright year
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+  navItems.forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
 
-// Reveal sections as they enter the screen
-const revealElements = document.querySelectorAll(".reveal");
+  document.addEventListener("click", (event) => {
+    if (
+      !navLinks.contains(event.target) &&
+      !menuToggle.contains(event.target)
+    ) {
+      closeMenu();
+    }
+  });
 
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
+  // Portfolio category filters
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+
+      filterButtons.forEach((item) => {
+        item.classList.toggle("active", item === button);
       });
-    },
-    { threshold: 0.12 }
-  );
 
-  revealElements.forEach((element) => {
-    revealObserver.observe(element);
+      projectCards.forEach((card) => {
+        const matches =
+          filter === "all" || card.dataset.category === filter;
+
+        card.classList.toggle("is-hidden", !matches);
+      });
+    });
   });
-} else {
-  revealElements.forEach((element) => {
-    element.classList.add("visible");
+
+  // Service buttons preselect the relevant contact option
+  document.querySelectorAll("[data-service]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const serviceSelect = $("serviceSelect");
+      const service = link.dataset.service;
+
+      if (serviceSelect) {
+        serviceSelect.value = service;
+      }
+    });
   });
-}
 
-// Preselect a service when the visitor clicks "Discuss project"
-const projectType = document.getElementById("projectType");
+  // Contact form: prepare a WhatsApp message
+  const contactForm = $("contactForm");
+  const formMessage = $("formMessage");
 
-document.querySelectorAll("[data-service]").forEach((link) => {
-  link.addEventListener("click", () => {
-    projectType.value = link.dataset.service;
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!contactForm.reportValidity()) {
+      return;
+    }
+
+    const name = $("clientName").value.trim();
+    const email = $("clientEmail").value.trim();
+    const service = $("serviceSelect").value;
+    const budget = $("budgetSelect").value || "Prefer to discuss";
+    const details = $("projectDetails").value.trim();
+
+    if (!name || !email || !service || !details) {
+      formMessage.textContent =
+        "Please complete all required fields.";
+      return;
+    }
+
+    // Replace this number if your WhatsApp contact changes.
+    const whatsappNumber = "2349116221696";
+
+    const message = [
+      "Hello Temmy Graphics!",
+      "",
+      "I would like to discuss a project.",
+      "",
+      "Name: " + name,
+      "Email: " + email,
+      "Service: " + service,
+      "Estimated budget: " + budget,
+      "",
+      "Project details:",
+      details,
+      "",
+      "Sent from the Temmy Graphics website."
+    ].join("\n");
+
+    const whatsappURL =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodeURIComponent(message);
+
+    formMessage.textContent =
+      "Opening WhatsApp. Please review your message and press Send there.";
+
+    const newWindow = window.open(
+      whatsappURL,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    // Fallback for browsers that block new windows
+    if (!newWindow) {
+      window.location.href = whatsappURL;
+    }
   });
-});
 
-// Contact form: create a WhatsApp message
-const contactForm = document.getElementById("contactForm");
+  // Scroll progress indicator and back-to-top button
+  const progressBar = $("scrollProgress");
+  const backToTop = $("backToTop");
 
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+  function updateScrollUI() {
+    const scrollable =
+      document.documentElement.scrollHeight - window.innerHeight;
 
-  if (!contactForm.reportValidity()) {
-    return;
+    const progress = scrollable > 0
+      ? (window.scrollY / scrollable) * 100
+      : 0;
+
+    progressBar.style.width = Math.min(progress, 100) + "%";
+
+    backToTop.classList.toggle(
+      "visible",
+      window.scrollY > 450
+    );
   }
 
-  const name = document.getElementById("clientName").value.trim();
-  const email = document.getElementById("clientEmail").value.trim();
-  const service = projectType.value;
-  const details = document.getElementById("projectDetails").value.trim();
+  window.addEventListener("scroll", updateScrollUI, {
+    passive: true
+  });
 
-  if (!name || !email || !service || !details) {
-    alert("Please complete all fields before continuing.");
-    return;
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  updateScrollUI();
+
+  // Highlight the navigation link for the current section
+  const sections = document.querySelectorAll("main section[id]");
+  let scrollObserver = null;
+
+  if ("IntersectionObserver" in window) {
+    scrollObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const currentId = entry.target.id;
+
+          navItems.forEach((link) => {
+            const isActive =
+              link.getAttribute("href") === "#" + currentId;
+
+            link.classList.toggle("active", isActive);
+          });
+        });
+      },
+      {
+        rootMargin: "-25% 0px -60% 0px",
+        threshold: 0
+      }
+    );
+
+    sections.forEach((section) => {
+      scrollObserver.observe(section);
+    });
   }
 
-  const message = [
-    "Hello Temmy Graphics!",
-    "",
-    "I would like to discuss a design project.",
-    "",
-    `Name: ${name}`,
-    `Email: ${email}`,
-    `Service: ${service}`,
-    "",
-    "Project details:",
-    details
-  ].join("\n");
+  // Gentle reveal animations
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-  const whatsappURL =
-    "https://wa.me/2349116221696?text=" +
-    encodeURIComponent(message);
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    const revealElements = document.querySelectorAll(
+      ".service-card, .project-card, .process-step, .about-copy, .contact-form"
+    );
 
-  // Open WhatsApp in a new tab so the form page stays available
-  const whatsappWindow = window.open(
-    whatsappURL,
-    "_blank",
-    "noopener,noreferrer"
-  );
+    revealElements.forEach((element) => {
+      element.classList.add("reveal");
+    });
 
-  // Fallback if the browser blocks the new tab
-  if (!whatsappWindow) {
-    window.location.href = whatsappURL;
+    document.body.classList.add("js-ready");
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
   }
 });
