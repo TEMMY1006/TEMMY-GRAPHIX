@@ -1,240 +1,109 @@
 
-"use strict";
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const backToTop = document.getElementById("backToTop");
+const contactForm = document.getElementById("contactForm");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const $ = (id) => document.getElementById(id);
+// Mobile navigation
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
 
-  // Update copyright year automatically
-  $("year").textContent = new Date().getFullYear();
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.textContent = isOpen ? "✕" : "☰";
+});
 
-  // Mobile navigation
-  const menuToggle = $("menuToggle");
-  const navLinks = $("navLinks");
-  const navItems = document.querySelectorAll(".nav-link");
-
-  function closeMenu() {
+// Close mobile navigation after clicking a link
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
     navLinks.classList.remove("open");
     menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Open navigation");
+    menuToggle.textContent = "☰";
+  });
+});
+
+// Automatically update the footer year
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+// Back to top button
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add("visible");
+  } else {
+    backToTop.classList.remove("visible");
   }
+});
 
-  menuToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation" : "Open navigation"
-    );
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
+});
 
-  navItems.forEach((link) => {
-    link.addEventListener("click", () => {
-      closeMenu();
-    });
-  });
+// Highlight the current navigation section
+const sections = document.querySelectorAll(
+  "main section[id]"
+);
 
-  document.addEventListener("click", (event) => {
-    if (
-      !navLinks.contains(event.target) &&
-      !menuToggle.contains(event.target)
-    ) {
-      closeMenu();
-    }
-  });
+const navItems = navLinks.querySelectorAll(
+  'a[href^="#"]'
+);
 
-  // Portfolio category filters
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const projectCards = document.querySelectorAll(".project-card");
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const filter = button.dataset.filter;
-
-      filterButtons.forEach((item) => {
-        item.classList.toggle("active", item === button);
-      });
-
-      projectCards.forEach((card) => {
-        const matches =
-          filter === "all" || card.dataset.category === filter;
-
-        card.classList.toggle("is-hidden", !matches);
-      });
-    });
-  });
-
-  // Service buttons preselect the relevant contact option
-  document.querySelectorAll("[data-service]").forEach((link) => {
-    link.addEventListener("click", () => {
-      const serviceSelect = $("serviceSelect");
-      const service = link.dataset.service;
-
-      if (serviceSelect) {
-        serviceSelect.value = service;
-      }
-    });
-  });
-
-  // Contact form: prepare a WhatsApp message
-  const contactForm = $("contactForm");
-  const formMessage = $("formMessage");
-
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!contactForm.reportValidity()) {
-      return;
-    }
-
-    const name = $("clientName").value.trim();
-    const email = $("clientEmail").value.trim();
-    const service = $("serviceSelect").value;
-    const budget = $("budgetSelect").value || "Prefer to discuss";
-    const details = $("projectDetails").value.trim();
-
-    if (!name || !email || !service || !details) {
-      formMessage.textContent =
-        "Please complete all required fields.";
-      return;
-    }
-
-    // Replace this number if your WhatsApp contact changes.
-    const whatsappNumber = "2349116221696";
-
-    const message = [
-      "Hello Temmy Graphics!",
-      "",
-      "I would like to discuss a project.",
-      "",
-      "Name: " + name,
-      "Email: " + email,
-      "Service: " + service,
-      "Estimated budget: " + budget,
-      "",
-      "Project details:",
-      details,
-      "",
-      "Sent from the Temmy Graphics website."
-    ].join("\n");
-
-    const whatsappURL =
-      "https://wa.me/" +
-      whatsappNumber +
-      "?text=" +
-      encodeURIComponent(message);
-
-    formMessage.textContent =
-      "Opening WhatsApp. Please review your message and press Send there.";
-
-    const newWindow = window.open(
-      whatsappURL,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
-    // Fallback for browsers that block new windows
-    if (!newWindow) {
-      window.location.href = whatsappURL;
-    }
-  });
-
-  // Scroll progress indicator and back-to-top button
-  const progressBar = $("scrollProgress");
-  const backToTop = $("backToTop");
-
-  function updateScrollUI() {
-    const scrollable =
-      document.documentElement.scrollHeight - window.innerHeight;
-
-    const progress = scrollable > 0
-      ? (window.scrollY / scrollable) * 100
-      : 0;
-
-    progressBar.style.width = Math.min(progress, 100) + "%";
-
-    backToTop.classList.toggle(
-      "visible",
-      window.scrollY > 450
-    );
-  }
-
-  window.addEventListener("scroll", updateScrollUI, {
-    passive: true
-  });
-
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-
-  updateScrollUI();
-
-  // Highlight the navigation link for the current section
-  const sections = document.querySelectorAll("main section[id]");
-  let scrollObserver = null;
-
-  if ("IntersectionObserver" in window) {
-    scrollObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          const currentId = entry.target.id;
-
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
           navItems.forEach((link) => {
-            const isActive =
-              link.getAttribute("href") === "#" + currentId;
-
-            link.classList.toggle("active", isActive);
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") ===
+                `#${entry.target.id}`
+            );
           });
-        });
-      },
-      {
-        rootMargin: "-25% 0px -60% 0px",
-        threshold: 0
-      }
-    );
+        }
+      });
+    },
+    {
+      rootMargin: "-25% 0px -60% 0px"
+    }
+  );
 
-    sections.forEach((section) => {
-      scrollObserver.observe(section);
-    });
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+}
+
+// Prepare client enquiries for WhatsApp
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (!contactForm.reportValidity()) {
+    return;
   }
 
-  // Gentle reveal animations
-  const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const service = document.getElementById("service").value;
+  const message = document.getElementById("message").value.trim();
 
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    const revealElements = document.querySelectorAll(
-      ".service-card, .project-card, .process-step, .about-copy, .contact-form"
-    );
+  const whatsappNumber = "2349116221696";
 
-    revealElements.forEach((element) => {
-      element.classList.add("reveal");
-    });
+  const whatsappMessage = [
+    "Hello Temmy Graphics!",
+    "",
+    "I would like to make a project enquiry.",
+    "",
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Service: ${service}`,
+    `Project Details: ${message}`
+  ].join("\n");
 
-    document.body.classList.add("js-ready");
+  const whatsappURL =
+    `https://wa.me/${whatsappNumber}?text=` +
+    encodeURIComponent(whatsappMessage);
 
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-  }
+  window.open(whatsappURL, "_blank", "noopener,noreferrer");
 });

@@ -4,489 +4,329 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0b0e">
-  <meta name="description" content="Temmy Graphics offers creative graphic design, modern web development and defensive cybersecurity services for businesses and personal brands.">
-  <title>Temmy Graphics | Design. Develop. Defend.</title>
+  <meta name="description" content="Temmy Graphics provides graphic design, web development and cybersecurity services for businesses and individuals.">
+  <title>Temmy Graphics | Digital Solutions</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div class="scroll-progress" id="scrollProgress"></div>
-
-  <header class="header" id="top">
-    <nav class="navbar container" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Temmy Graphics home">
-        <span class="brand-mark">T<span>G</span></span>
-        <span class="brand-name">TEMMY<span>DIGITAL SOLUTIONS</span></span>
+  <header class="header" id="home">
+    <nav class="navbar container">
+      <a href="#home" class="brand">
+        <span class="brand-icon">T</span>
+        <span>TEMMY <strong>GRAPHICS</strong>
+          <small>DESIGN. DEVELOP. DEFEND.</small>
+        </span>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation"
-        aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false">
+        ☰
       </button>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#work" class="nav-link">Portfolio</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#contact" class="nav-link nav-cta">Let's Talk <span>↗</span></a>
-      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">Hire Me ↗</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero section" id="home">
-      <div class="hero-glow glow-one"></div>
-      <div class="hero-glow glow-two"></div>
-
+    <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="availability">
-            <span class="availability-dot"></span>
-            Available for freelance projects
-          </div>
+        <div class="hero-content">
+          <span class="eyebrow">
+            <span class="status-dot"></span>
+            CREATIVE DIGITAL SOLUTIONS
+          </span>
 
-          <p class="eyebrow">CREATIVE THINKING. SMART TECHNOLOGY.</p>
-
-          <h1>
-            I build brands<br>
-            that <span class="gold-text">stand out.</span>
+          <h1>Building Brands.<br>
+            Creating <span class="gradient-text">Digital Experiences.</span>
           </h1>
 
           <p class="hero-description">
-            From powerful visual identities to modern websites and
-            digital security, I help businesses turn their ideas into
-            professional digital experiences.
+            I help businesses and individuals stand out through
+            professional graphic design, modern websites, and
+            cybersecurity-focused solutions.
           </p>
 
           <div class="hero-actions">
-            <a href="#work" class="btn btn-primary">Explore My Work <span>↗</span></a>
-            <a href="#contact" class="btn btn-secondary">Start a Project</a>
+            <a href="#contact" class="btn btn-primary">Let's Work Together ↗</a>
+            <a href="#portfolio" class="btn btn-secondary">Explore My Work</a>
           </div>
 
-          <div class="hero-specialties">
-            <span><i>01</i> Graphic Design</span>
-            <span><i>02</i> Web Development</span>
-            <span><i>03</i> Cybersecurity</span>
+          <div class="hero-trust">
+            <span><span class="check">✓</span> Creative solutions</span>
+            <span><span class="check">✓</span> Client-focused service</span>
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Creative digital services illustration">
-          <div class="visual-orbit orbit-one"></div>
-          <div class="visual-orbit orbit-two"></div>
-
-          <div class="visual-card visual-card-back">
-            <span class="tiny-label">DIGITAL EXPERIENCE</span>
-            <div class="code-lines">
-              <span></span><span></span><span></span><span></span>
+        <div class="hero-visual">
+          <div class="visual-glow"></div>
+          <div class="visual-card main-visual-card">
+            <div class="visual-top">
+              <span class="mini-logo">TG</span>
+              <span class="live-label">DIGITAL STUDIO</span>
             </div>
-            <p>Build something remarkable.</p>
-          </div>
-
-          <div class="visual-card visual-card-main">
-            <div class="visual-card-top">
-              <span class="window-dots">● ● ●</span>
-              <span class="tiny-label">CREATIVE STUDIO</span>
+            <div class="visual-art">
+              <div class="art-circle"></div>
+              <div class="art-square"></div>
+              <div class="art-line"></div>
+              <span class="art-letter">T</span>
             </div>
-            <div class="monogram">T<span>G</span></div>
-            <p class="visual-title">Ideas into<br><span>Impact.</span></p>
-            <div class="visual-line"></div>
-            <div class="visual-card-bottom">
-              <span>DESIGN</span>
-              <span>DEVELOP</span>
-              <span>DEFEND</span>
+            <div class="visual-bottom">
+              <div>
+                <small>YOUR DIGITAL PARTNER</small>
+                <h3>Ideas into Impact.</h3>
+              </div>
+              <span class="arrow-circle">↗</span>
             </div>
           </div>
 
-          <div class="floating-chip chip-design">
-            <span class="chip-icon">✳</span>
-            <span><strong>Creative Design</strong><small>Made to be remembered</small></span>
+          <div class="floating-card floating-one">
+            <span class="floating-icon">✦</span>
+            <div><strong>Creative Design</strong><small>Make your brand stand out</small></div>
           </div>
 
-          <div class="floating-chip chip-code">
-            <span class="chip-icon">{ }</span>
-            <span><strong>Web Development</strong><small>Built for the web</small></span>
-          </div>
-
-          <div class="security-stamp">
-            <span>◈</span>
-            <small>SECURITY<br>MINDED</small>
+          <div class="floating-card floating-two">
+            <span class="floating-icon shield">✓</span>
+            <div><strong>Digital Solutions</strong><small>Built with purpose</small></div>
           </div>
         </div>
       </div>
-
-      <div class="container hero-bottom">
-        <span>TURNING IDEAS INTO DIGITAL VALUE</span>
-        <a href="#services">Discover what I do <span>↓</span></a>
-      </div>
     </section>
 
-    <!-- SERVICE STRIP -->
-    <section class="service-strip">
-      <div class="container strip-grid">
-        <div><span class="strip-symbol">✳</span><span>Visual Identity</span></div>
-        <div><span class="strip-symbol">&lt;/&gt;</span><span>Web Experiences</span></div>
-        <div><span class="strip-symbol">◈</span><span>Digital Protection</span></div>
-        <div><span class="strip-symbol">↗</span><span>Business Growth</span></div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section services-section" id="services">
+    <section class="services section" id="services">
       <div class="container">
         <div class="section-heading">
-          <div>
-            <p class="eyebrow">WHAT I DO</p>
-            <h2>Three skills.<br><span class="muted-heading">One creative partner.</span></h2>
-          </div>
-          <p class="section-intro">
-            Creative design, functional websites and security-conscious
-            digital solutions to help your business move forward.
-          </p>
+          <span class="eyebrow">WHAT I DO</span>
+          <h2>Services that move <span class="gradient-text">you forward.</span></h2>
+          <p>Everything you need to build a stronger digital presence.</p>
         </div>
 
-        <div class="services-grid">
+        <div class="service-grid">
           <article class="service-card">
-            <div class="service-top">
-              <span class="service-number">01 / DESIGN</span>
-              <span class="service-icon">✳</span>
-            </div>
+            <div class="service-icon blue-icon">✳</div>
+            <span class="service-number">01 / DESIGN</span>
             <h3>Graphic Design</h3>
-            <p>
-              Give your brand a clear identity with professional visuals
-              that communicate your message and make a lasting impression.
-            </p>
+            <p>Visual designs that communicate your message and give your brand a professional identity.</p>
             <ul>
-              <li>Logo design & brand identity</li>
-              <li>Flyers, posters & banners</li>
-              <li>Social media graphics</li>
-              <li>Business cards & promotional materials</li>
+              <li>Logo and brand identity</li>
+              <li>Flyers and social media designs</li>
+              <li>Business cards and banners</li>
+              <li>Posters and promotional materials</li>
             </ul>
-            <a class="text-link" href="#contact" data-service="Graphic Design">
-              Discuss a design project <span>↗</span>
-            </a>
+            <a href="#contact" class="text-link">Request a design ↗</a>
           </article>
 
-          <article class="service-card featured-service">
-            <div class="service-top">
-              <span class="service-number">02 / DEVELOPMENT</span>
-              <span class="service-icon">{ }</span>
-            </div>
+          <article class="service-card featured-card">
+            <div class="service-icon navy-icon">&lt;/&gt;</div>
+            <span class="service-number">02 / DEVELOPMENT</span>
             <h3>Web Development</h3>
-            <p>
-              Build a strong online presence with responsive, user-friendly
-              websites designed around your business goals.
-            </p>
+            <p>Responsive, modern websites that help businesses showcase their services and reach customers.</p>
             <ul>
-              <li>Business & portfolio websites</li>
+              <li>Business and portfolio websites</li>
               <li>Landing pages</li>
-              <li>HTML, CSS & JavaScript projects</li>
-              <li>Website improvements & maintenance</li>
+              <li>HTML, CSS and JavaScript</li>
+              <li>Website updates and deployment</li>
             </ul>
-            <a class="text-link" href="#contact" data-service="Web Development">
-              Build your website <span>↗</span>
-            </a>
+            <a href="#contact" class="text-link">Build your website ↗</a>
           </article>
 
           <article class="service-card">
-            <div class="service-top">
-              <span class="service-number">03 / SECURITY</span>
-              <span class="service-icon">◈</span>
-            </div>
+            <div class="service-icon cyan-icon">⌑</div>
+            <span class="service-number">03 / SECURITY</span>
             <h3>Cybersecurity</h3>
-            <p>
-              Improve your digital safety with security awareness and
-              authorized, defensive security support.
-            </p>
+            <p>Security-focused digital support and defensive practices to help improve awareness and reduce risk.</p>
             <ul>
-              <li>Basic website security reviews</li>
-              <li>Security awareness guidance</li>
-              <li>Security configuration checks</li>
-              <li>Vulnerability findings & recommendations</li>
+              <li>Cybersecurity awareness</li>
+              <li>Basic security assessments</li>
+              <li>Security best-practice guidance</li>
+              <li>Defensive security learning projects</li>
             </ul>
-            <a class="text-link" href="#contact" data-service="Cybersecurity">
-              Discuss security needs <span>↗</span>
-            </a>
+            <a href="#contact" class="text-link">Discuss a project ↗</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section class="section work-section" id="work">
+    <section class="portfolio section" id="portfolio">
       <div class="container">
         <div class="section-heading">
-          <div>
-            <p class="eyebrow">SELECTED WORK</p>
-            <h2>Ideas made <span class="gold-text">visible.</span></h2>
-          </div>
-          <p class="section-intro">
-            A showcase of the creative and technical work I offer.
-            Replace the sample projects below with your own completed work.
-          </p>
+          <span class="eyebrow">SELECTED WORK</span>
+          <h2>Work that speaks <span class="gradient-text">for itself.</span></h2>
+          <p>A place to showcase your best designs, websites and security projects.</p>
         </div>
 
-        <div class="portfolio-filters" role="group" aria-label="Filter projects">
-          <button class="filter-btn active" data-filter="all">All Projects</button>
-          <button class="filter-btn" data-filter="design">Graphic Design</button>
-          <button class="filter-btn" data-filter="web">Web Development</button>
-          <button class="filter-btn" data-filter="security">Cybersecurity</button>
-        </div>
-
-        <div class="portfolio-grid" id="portfolioGrid">
-          <article class="project-card" data-category="design">
-            <div class="project-art project-brand">
-              <div class="project-brand-frame">
-                <span class="project-kicker">BRAND IDENTITY</span>
-                <span class="project-monogram">T<span>G</span></span>
-                <span class="project-brand-name">YOUR BRAND.</span>
-                <span class="project-brand-sub">YOUR NEXT CHAPTER.</span>
-              </div>
-              <span class="project-art-index">01</span>
+        <div class="portfolio-grid">
+          <article class="project project-design">
+            <div class="project-art art-design">
+              <span class="project-tag">BRAND IDENTITY</span>
+              <div class="design-symbol">TG<span>.</span></div>
+              <p>MAKE YOUR BRAND<br>UNFORGETTABLE.</p>
             </div>
             <div class="project-info">
-              <div><p class="project-category">GRAPHIC DESIGN</p><h3>Brand Identity Concept</h3></div>
+              <div><h3>Brand & Graphic Design</h3><p>Logos, flyers and brand visuals</p></div>
               <span class="project-arrow">↗</span>
             </div>
-            <p class="project-description">A sample luxury-inspired visual identity concept.</p>
           </article>
 
-          <article class="project-card" data-category="web">
-            <div class="project-art project-web">
-              <div class="browser-frame">
-                <div class="browser-top"><span>● ● ●</span><span>yourbrand.com</span></div>
-                <div class="browser-content">
-                  <span class="browser-mini-label">YOUR DIGITAL HOME</span>
-                  <strong>Make your<br>next move.</strong>
-                  <span class="browser-button">DISCOVER MORE ↗</span>
-                  <div class="browser-shape"></div>
-                </div>
+          <article class="project project-web">
+            <div class="project-art art-web">
+              <div class="browser-bar"><i></i><i></i><i></i><span>yourbusiness.com</span></div>
+              <div class="browser-content">
+                <span class="browser-label">YOUR BRAND ONLINE</span>
+                <strong>Build Your<br>Digital Presence.</strong>
+                <div class="browser-button">Explore More →</div>
               </div>
-              <span class="project-art-index">02</span>
             </div>
             <div class="project-info">
-              <div><p class="project-category">WEB DEVELOPMENT</p><h3>Business Website Concept</h3></div>
+              <div><h3>Website Development</h3><p>Business and portfolio websites</p></div>
               <span class="project-arrow">↗</span>
             </div>
-            <p class="project-description">A sample responsive landing page for a business.</p>
           </article>
 
-          <article class="project-card" data-category="security">
-            <div class="project-art project-security">
-              <div class="security-ring"><span>◈</span></div>
-              <p class="security-heading">DIGITAL<br>SECURITY</p>
-              <div class="security-status"><span></span> AWARENESS & DEFENSE</div>
-              <span class="project-art-index">03</span>
+          <article class="project project-security">
+            <div class="project-art art-security">
+              <div class="security-orbit">✓</div>
+              <span class="security-label">SECURITY FIRST</span>
+              <h3>Protect Your<br>Digital World.</h3>
+              <p>Awareness • Prevention • Protection</p>
             </div>
             <div class="project-info">
-              <div><p class="project-category">CYBERSECURITY</p><h3>Security Awareness Concept</h3></div>
+              <div><h3>Cybersecurity Projects</h3><p>Defensive labs and security awareness</p></div>
               <span class="project-arrow">↗</span>
             </div>
-            <p class="project-description">A visual concept for communicating digital safety.</p>
           </article>
         </div>
 
         <p class="portfolio-note">
-          Portfolio note: these are illustrative concepts, not client projects
-          or proof of completed security assessments.
+          Note: These are sample visual placeholders. Replace them with screenshots
+          and images of your actual completed projects.
         </p>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section about-section" id="about">
+    <section class="about section" id="about">
       <div class="container about-grid">
         <div class="about-visual">
-          <div class="about-outline"></div>
-          <div class="about-monogram">T<span>G</span></div>
-          <div class="about-label">
-            <span class="availability-dot"></span>
-            CREATIVE & TECHNICAL
+          <div class="about-panel">
+            <span class="about-monogram">TG</span>
+            <span class="about-caption">CREATIVITY MEETS TECHNOLOGY</span>
+            <div class="about-decoration"></div>
           </div>
-          <span class="about-decoration decoration-one">✳</span>
-          <span class="about-decoration decoration-two">&lt;/&gt;</span>
         </div>
 
-        <div class="about-copy">
-          <p class="eyebrow">A LITTLE ABOUT ME</p>
-          <h2>Creativity meets<br><span class="gold-text">technology.</span></h2>
+        <div class="about-content">
+          <span class="eyebrow">ABOUT TEMMY GRAPHICS</span>
+          <h2>One creative mind.<br><span class="gradient-text">Three digital skills.</span></h2>
           <p>
-            I'm a graphic designer and web developer with an interest in
-            cybersecurity. Through Temmy Graphics, I bring visual creativity
-            and technical thinking together to help people and businesses
-            present themselves professionally online.
+            Temmy Graphics is my digital brand for combining creativity,
+            technology and security-minded thinking to solve real problems.
           </p>
           <p>
-            Whether you need a memorable design, a modern website or guidance
-            on improving digital security, my goal is to deliver clear,
-            thoughtful work that serves a real purpose.
+            From creating visual identities to building websites and learning
+            defensive cybersecurity, my goal is to deliver useful, professional
+            work that helps clients bring their ideas to life.
           </p>
 
-          <div class="skill-tags">
-            <span>Graphic Design</span>
-            <span>HTML & CSS</span>
-            <span>JavaScript</span>
-            <span>Responsive Design</span>
-            <span>Defensive Security</span>
+          <div class="skill-list">
+            <div class="skill-item"><span>01</span><div><strong>Creative Thinking</strong><small>Design with clarity and purpose.</small></div></div>
+            <div class="skill-item"><span>02</span><div><strong>Modern Development</strong><small>Responsive and user-friendly websites.</small></div></div>
+            <div class="skill-item"><span>03</span><div><strong>Security Awareness</strong><small>A defensive, responsible approach to technology.</small></div></div>
           </div>
 
-          <a href="#contact" class="btn btn-primary">Let's Work Together <span>↗</span></a>
+          <a href="#contact" class="btn btn-primary">Start a Project ↗</a>
         </div>
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section class="section process-section">
+    <section class="process section">
       <div class="container">
         <div class="section-heading">
-          <div>
-            <p class="eyebrow">HOW I WORK</p>
-            <h2>A simple process.<br><span class="muted-heading">Thoughtful results.</span></h2>
-          </div>
-          <p class="section-intro">
-            Every project starts with understanding your needs and agreeing
-            on the right outcome.
-          </p>
+          <span class="eyebrow">HOW IT WORKS</span>
+          <h2>Simple process. <span class="gradient-text">Clear results.</span></h2>
         </div>
 
         <div class="process-grid">
-          <article class="process-step">
-            <span>01</span><h3>Discover</h3>
-            <p>We discuss your goals, audience, requirements and budget.</p>
-          </article>
-          <article class="process-step">
-            <span>02</span><h3>Plan</h3>
-            <p>I propose a direction and agree on the project scope with you.</p>
-          </article>
-          <article class="process-step">
-            <span>03</span><h3>Create</h3>
-            <p>I work on the design or technical solution and share progress.</p>
-          </article>
-          <article class="process-step">
-            <span>04</span><h3>Deliver</h3>
-            <p>We review the result and agree on final delivery.</p>
-          </article>
+          <div class="process-item"><span>01</span><h3>Tell Me Your Idea</h3><p>Share your project, goals and expectations.</p></div>
+          <div class="process-item"><span>02</span><h3>Plan & Create</h3><p>We agree on the scope before work begins.</p></div>
+          <div class="process-item"><span>03</span><h3>Review the Work</h3><p>Review the agreed deliverables and request included revisions.</p></div>
+          <div class="process-item"><span>04</span><h3>Project Delivery</h3><p>Receive the completed deliverables and next steps.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section contact-section" id="contact">
+    <section class="contact section" id="contact">
       <div class="container contact-grid">
-        <div class="contact-copy">
-          <p class="eyebrow">HAVE A PROJECT IN MIND?</p>
-          <h2>Let's create<br>something <span class="gold-text">great.</span></h2>
-          <p>
-            Tell me what you want to achieve. Choose a service and send your
-            project details directly through WhatsApp or email.
-          </p>
+        <div class="contact-content">
+          <span class="eyebrow">LET'S CONNECT</span>
+          <h2>Have a project<br>in <span class="gradient-text">mind?</span></h2>
+          <p>Tell me what you need. Let's discuss how I can help you move your idea forward.</p>
 
           <div class="contact-detail">
-            <span class="contact-detail-icon">↗</span>
-            <div><small>WHATSAPP / PHONE</small><a href="https://wa.me/2349116221696" target="_blank" rel="noopener noreferrer">+234 911 622 1696</a></div>
+            <span class="detail-icon">✉</span>
+            <div><small>EMAIL</small><a href="mailto:temmyo267@gmail.com">temmyo267@gmail.com</a></div>
           </div>
-
           <div class="contact-detail">
-            <span class="contact-detail-icon">@</span>
-            <div><small>EMAIL ADDRESS</small><a href="mailto:temmyo267@gmail.com">temmyo267@gmail.com</a></div>
+            <span class="detail-icon">☎</span>
+            <div><small>PHONE / WHATSAPP</small><a href="https://wa.me/2349116221696" target="_blank" rel="noopener noreferrer">+234 911 622 1696</a></div>
           </div>
-
           <div class="contact-detail">
-            <span class="contact-detail-icon">⌖</span>
+            <span class="detail-icon">⌖</span>
             <div><small>LOCATION</small><span>Lagos State, Nigeria</span></div>
           </div>
         </div>
 
         <form class="contact-form" id="contactForm">
-          <h3>Tell me about your project</h3>
-          <p class="muted">Fill out the details below to prepare your message.</p>
+          <h3>Send a project enquiry</h3>
+          <p>Fill in your details to prepare a message.</p>
 
-          <div class="form-row">
-            <div class="form-field">
-              <label for="clientName">Your name</label>
-              <input id="clientName" name="name" type="text" placeholder="Full name" required maxlength="80">
-            </div>
-            <div class="form-field">
-              <label for="clientEmail">Your email</label>
-              <input id="clientEmail" name="email" type="email" placeholder="you@example.com" required maxlength="120">
-            </div>
-          </div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" placeholder="Enter your name" required>
 
-          <div class="form-field">
-            <label for="serviceSelect">Service required</label>
-            <select id="serviceSelect" name="service" required>
-              <option value="">Choose a service</option>
-              <option>Graphic Design</option>
-              <option>Web Development</option>
-              <option>Cybersecurity</option>
-              <option>Multiple Services</option>
-            </select>
-          </div>
+          <label for="email">Your email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
 
-          <div class="form-field">
-            <label for="budgetSelect">Estimated budget (optional)</label>
-            <select id="budgetSelect" name="budget">
-              <option value="">Prefer to discuss</option>
-              <option>Below ₦25,000</option>
-              <option>₦25,000 – ₦75,000</option>
-              <option>₦75,000 – ₦150,000</option>
-              <option>Above ₦150,000</option>
-            </select>
-          </div>
+          <label for="service">Service required</label>
+          <select id="service" name="service" required>
+            <option value="">Select a service</option>
+            <option>Graphic Design</option>
+            <option>Web Development</option>
+            <option>Cybersecurity</option>
+            <option>Multiple Services</option>
+            <option>Other Enquiry</option>
+          </select>
 
-          <div class="form-field">
-            <label for="projectDetails">Project details</label>
-            <textarea id="projectDetails" name="details" rows="5"
-              placeholder="Describe what you need..." required maxlength="1500"></textarea>
-          </div>
+          <label for="message">Project details</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
 
-          <button class="btn btn-primary form-submit" type="submit">
-            Send via WhatsApp <span>↗</span>
-          </button>
-          <p class="form-hint">Your message will open in WhatsApp for you to review and send.</p>
-          <p id="formMessage" class="form-message" role="status"></p>
+          <button type="submit" class="btn btn-primary form-button">Continue on WhatsApp ↗</button>
+          <p class="form-note">Your message will open in WhatsApp for you to send.</p>
         </form>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="final-cta">
-      <div class="container final-cta-inner">
-        <div>
-          <p class="eyebrow">YOUR IDEA DESERVES A GREAT START</p>
-          <h2>Ready to make it happen?</h2>
-        </div>
-        <a class="btn btn-primary" href="#contact">Start a Conversation <span>↗</span></a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <a class="brand" href="#home">
-        <span class="brand-mark">T<span>G</span></span>
-        <span class="brand-name">TEMMY<span>GRAPHICS</span></span>
+    <div class="container footer-content">
+      <a href="#home" class="brand footer-brand">
+        <span class="brand-icon">T</span>
+        <span>TEMMY <strong>GRAPHICS</strong><small>DESIGN. DEVELOP. DEFEND.</small></span>
       </a>
-
-      <p>Design. Develop. Defend.</p>
-
-      <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#work">Portfolio</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <p class="copyright">© <span id="year"></span> Temmy Graphics. All rights reserved.</p>
+      <p>Creative ideas. Smart development. Security-minded solutions.</p>
+      <span class="copyright">© <span id="year"></span> Temmy Graphics. All rights reserved.</span>
     </div>
   </footer>
 
   <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
+  <script src="script.js"></script>
 </body>
 </html>
